@@ -73,18 +73,51 @@ class ContactPage extends StatelessWidget {
             // Add Button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(onPressed: (){},
+              child: ElevatedButton(
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey,
+                  backgroundColor: Colors.black54,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
-                child: const Text('Add',style: TextStyle(fontSize:16, color: Colors.white),),
-              )
+                child: const Text(
+                  'Add',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
 
-            )
+            // Contact List
+            Expanded(
+              child: ListView.builder(
+                itemCount: contacts.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colors.white,
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.person,
+                        color: Colors.brown,
+                        size: 35,
+                      ),
 
-
-
+                      title: Text(
+                        contacts[index]['name']!,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      subtitle: Text(
+                        contacts[index]['phone']!,
+                      ),
+                      trailing: const Icon(Icons.call,
+                      color: Colors.blue),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
